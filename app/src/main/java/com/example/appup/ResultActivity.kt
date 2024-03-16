@@ -31,17 +31,17 @@ class ResultActivity : AppCompatActivity() {
         val tv_congratulations = findViewById<TextView>(R.id.tv_congratulations)
 
         val formula = correctAnswers.toDouble()/totalQuestions.toDouble()
-        if(formula<0.5)
-        {
-            tv_congratulations.text = "Вы отсталый!"
-        }
-        if(formula>0.5&&formula<0.8)
-        {
-            tv_congratulations.text = "Вы средне!"
-        }
-        else
-        {
-            tv_congratulations.text = "Вы гениальны!"
+        when (formula) {
+            in 0.0..0.5 -> {
+                tv_congratulations.text = "Вы отсталый!"
+            }
+            in 0.5..0.8 -> {
+                tv_congratulations.text = "Вы средне!"
+            }
+
+            else -> {
+                tv_congratulations.text = "Вы гениальны!"
+            }
         }
 
 
